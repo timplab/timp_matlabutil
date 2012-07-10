@@ -1,4 +1,4 @@
-function [data] = readdelim1(namey, delim)
+function [data] = readdelim2(namey, delim)
 %This function acts as read.delim from R(kindof)
 %It reads in a delimited file, and puts the strings/numbers into a
 %structure defined by the header line.  It assumes simple file orientation
@@ -14,6 +14,8 @@ header=textscan(headline, '%s', 'delimiter', delim);
 %get num columns
 cnum=length(header{1});
 
+%parse headers, replace whitespace with underscores
+fnames=regexprep(header{1}, ' ', '_');
 
 %init array
 for i=1:cnum
@@ -47,9 +49,9 @@ end
 for i=length(dataarray{1}):-1:1
     for j=1:cnum
         if stringy(j)
-            data(i).(header{1}{j})=dataarray{j}{i};
+            data(i).(fnames{j})=dataarray{j}{i};
         else
-            data(i).(header{1}{j})=str2num(dataarray{j}{i});
+            data(i).(fnames{j})=str2num(dataarray{j}{i});
         end
     end
 end
