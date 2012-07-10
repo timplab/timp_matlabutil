@@ -1,4 +1,4 @@
-function [] = percentile_range1(y)
+function [] = percentile_range(y)
 
 r=prctile(y, [.1 99.9]);
 

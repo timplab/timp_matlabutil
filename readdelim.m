@@ -1,4 +1,4 @@
-function [data] = readdelim2(namey, delim)
+function [data] = readdelim(namey, delim)
 %This function acts as read.delim from R(kindof)
 %It reads in a delimited file, and puts the strings/numbers into a
 %structure defined by the header line.  It assumes simple file orientation

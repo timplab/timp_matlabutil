@@ -1,0 +1,7 @@
+# a comment - this is ignored
+.DS_Store
+._*
+*~
+.\#*
+.Rhistory
+\#*
