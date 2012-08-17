@@ -6,7 +6,7 @@ if nargin<2
 end
 
 if ~isfield(param, 'plotloc')
-    param.plotloc='~/Dropbox/Lore_Plots/';
+    param.plotloc='~/Dropbox/temp/';
 end
 
 if ~isfield(param, 'plotname')
