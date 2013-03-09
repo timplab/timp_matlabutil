@@ -1,5 +1,5 @@
 function [] = outplot(fhandle, param)
-%This funciton takes in a figure handle and spits out a plotted file
+%This function takes in a figure handle and spits out a plotted file
 
 if nargin<2
   param=struct;
