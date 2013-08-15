@@ -23,7 +23,7 @@ for i=1:cnum
 end
 
 %Init string/nostring var
-stringy=false(13,1);
+stringy=false(cnum,1);
 
 %Read in next line
 readline=fgetl(fid);
@@ -31,11 +31,18 @@ readline=fgetl(fid);
 %While line is not EOF
 while ischar(readline)
     readin=textscan(readline, '%s', 'delimiter', delim);
-    
-    for i=1:cnum
-        stringy(i)=isempty(str2num(readin{1}{i}))|stringy(i);
-        dataarray{i}=[dataarray{i} readin{1}{i}];
+    if strcmp(readline(end),delim)  %# Account for when the line ends with delimiter
+      dataarray{cnum} =[dataarray{cnum} '-1'];                     
     end
+    
+    for i=1:length(readin{1}) %Per column
+        if isempty(readin{1}{i})
+            dataarray{i}=[dataarray{i} '-1']; %If empty set to -1
+        else 
+            stringy(i)=isempty(str2num(readin{1}{i}))|stringy(i); %Test if string or not
+            dataarray{i}=[dataarray{i} readin{1}{i}];
+        end
+    end  
     readline=fgetl(fid);
 end
 
