@@ -31,7 +31,7 @@ readline=fgetl(fid);
 %While line is not EOF
 while ischar(readline)
     readin=textscan(readline, '%s', 'delimiter', delim);
-    if strcmp(readline(end),delim)  %# Account for when the line ends with delimiter
+    if strcmp(readline(end),delim)  %Account for when the line ends with delimiter
       dataarray{cnum} =[dataarray{cnum} '-1'];                     
     end
     
